@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1e23b1eef7ed04395cf3fe4c9a59fb, type: 3}
+  m_Name: SM_Wep_Shield_01
+  m_EditorClassIdentifier: 
+  itemIcon: {fileID: 21300000, guid: e50017354dc29c44794a29578a377e32, type: 3}
+  itemName: Shield
+  modelPrefab: {fileID: 3088365062336723652, guid: d5423ea4108184741a9696d79e09fa6f, type: 3}
+  isUnarmed: 0
+  right_Hand_Idle: Right_Arm_Idle_1
+  left_Hand_Idle: Left_Arm_Idle_1
+  th_idle: Both Arms Empty
+  on_light_attack_1: Empty
+  on_light_attack_2: Empty
+  on_heavy_attack_1: Empty
+  oh_heavy_attack_2: Empty
+  th_light_attack_1: Empty
+  th_light_attack_2: Empty
+  baseStamina: 20
+  lightAttackMultiplier: 1
+  heavyAttackMultiplier: 2
+  isSpellCaster: 0
+  isFaithCaster: 0
+  isPyroCaster: 0
+  isMeleeWeapon: 1
