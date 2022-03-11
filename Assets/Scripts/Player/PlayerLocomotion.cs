@@ -295,7 +295,7 @@ namespace CXZ
                 if (playerManager.isInteracting || inputHandler.moveAmount > 0)
                 {
                     //不知道有什么用的代码
-                    myTransform.position = Vector3.Lerp(myTransform.position, targetPosition, Time.deltaTime);
+                    myTransform.position = Vector3.Slerp(myTransform.position, targetPosition, Time.deltaTime);
                     //myTransform.position = targetPosition;
                 }
                 else

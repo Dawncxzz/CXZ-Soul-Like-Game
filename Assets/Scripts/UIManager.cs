@@ -7,7 +7,7 @@ namespace CXZ
     public class UIManager : MonoBehaviour
     {
         public PlayerInventory playerInventory;
-        public EquiplmentWindowUI equiplmentWindowUI;
+        public EquipmentWindowUI equiplmentWindowUI;
 
         [Header("UI Window")]
         public GameObject hudWindow;

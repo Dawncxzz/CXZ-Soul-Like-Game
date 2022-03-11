@@ -143,10 +143,10 @@ namespace CXZ
                     interactableUIGameobject.SetActive(false);
                 }
 
-                if (itemInteractableGameObject != null && inputHandler.a_Input)
-                { 
-                    itemInteractableGameObject.SetActive(false);
-                }
+                //if (itemInteractableGameObject != null && inputHandler.a_Input)
+                //{ 
+                //    itemInteractableGameObject.SetActive(false);
+                //}
             }
 
         }

@@ -8,7 +8,7 @@ namespace CXZ
     public class WeaponInventorySlot : MonoBehaviour
     {
         PlayerInventory playerInventory;
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager weaponSlotManager;
         UIManager uiManager;
         public Image icon;
         WeaponItem item;
@@ -16,7 +16,7 @@ namespace CXZ
         private void Awake()
         {
             playerInventory = FindObjectOfType<PlayerInventory>();
-            weaponSlotManager = FindObjectOfType<WeaponSlotManager>();
+            weaponSlotManager = FindObjectOfType<PlayerWeaponSlotManager>();
             uiManager = FindObjectOfType<UIManager>();
         }
 

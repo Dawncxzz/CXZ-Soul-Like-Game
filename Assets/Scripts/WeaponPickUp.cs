@@ -32,11 +32,19 @@ namespace CXZ
             playerManager.itemInteractableGameObject.GetComponentInChildren<Text>().text = weapon.itemName;
             playerManager.itemInteractableGameObject.GetComponentInChildren<RawImage>().texture = weapon.itemIcon.texture;
             playerManager.itemInteractableGameObject.SetActive(true);
-
+            StartCoroutine(SetItemInteractableGameObject(playerManager));
+            gameObject.GetComponent<ParticleSystem>().Stop();
             if (transform.parent.GetComponentInParent<Collider>() != null)
             {
                 transform.parent.GetComponentInParent<Collider>().enabled = true;
             }
+        }
+
+        IEnumerator SetItemInteractableGameObject(PlayerManager playerManager)
+        {
+            yield return new WaitForSeconds(2f);
+            playerManager.itemInteractableGameObject.SetActive(false);
+            playerManager.interactableUIGameobject.SetActive(false);
             Destroy(gameObject);
         }
     }

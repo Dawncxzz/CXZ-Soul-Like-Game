@@ -6,7 +6,7 @@ namespace CXZ
 {
     public class PlayerInventory : MonoBehaviour
     {
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager weaponSlotManager;
 
         public SpellItem currentSpell;
         public WeaponItem rightWeapon;
@@ -24,7 +24,7 @@ namespace CXZ
 
         private void Awake()
         {
-            weaponSlotManager = GetComponentInChildren<WeaponSlotManager>();
+            weaponSlotManager = GetComponentInChildren<PlayerWeaponSlotManager>();
         }
 
         private void Start()

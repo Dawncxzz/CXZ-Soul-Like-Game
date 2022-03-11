@@ -43,7 +43,6 @@ namespace CXZ
                 Vector3 direction = enemyManager.currentTarget.transform.position - enemyManager.transform.position;
                 direction.y = 0;
                 direction.Normalize();
-                Debug.Log(1);
                 if (direction == Vector3.zero)
                 {
 

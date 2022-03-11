@@ -30,6 +30,8 @@ namespace CXZ
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log(transform.root.tag);
+
             if (other.tag == "Player" && transform.root.tag != "Player")
             {
                 PlayerStats playerStats = other.GetComponent<PlayerStats>();

@@ -27,7 +27,6 @@ namespace CXZ
             #region Handle Target Detection
             Collider[] colliders = Physics.OverlapSphere(enemyManager.transform.position, detectionRadius, detectionLayer);
             Debug.DrawLine(enemyManager.transform.position, enemyManager.transform.position + enemyManager.transform.forward * detectionRadius, Color.yellow);
-            Debug.Log(colliders.Length);
             for (int i = 0; i < colliders.Length; i++)
             {
                 CharacterStats characterStats = colliders[i].GetComponent<CharacterStats>();

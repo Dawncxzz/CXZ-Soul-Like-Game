@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CXZ
 {
-    public class WeaponSlotManager : MonoBehaviour
+    public class PlayerWeaponSlotManager : MonoBehaviour
     {
         PlayerManager playerManager;
         PlayerInventory playerInventory;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace CXZ
 {
-    public class EquiplmentWindowUI : MonoBehaviour
+    public class EquipmentWindowUI : MonoBehaviour
     {
         public bool rightHandSlot01Selected;
         public bool rightHandSlot02Selected;

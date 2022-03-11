@@ -11,7 +11,7 @@ namespace CXZ
         PlayerStats playerStats;
         PlayerInventory playerInventory;
         InputHandler inputHandler;
-        WeaponSlotManager weaponSlotManager;
+        PlayerWeaponSlotManager weaponSlotManager;
         public string lastAttack;
 
         LayerMask backStabLayer = 1 << 12;
@@ -22,7 +22,7 @@ namespace CXZ
             playerManager = GetComponentInParent<PlayerManager>();
             playerStats = GetComponentInParent<PlayerStats>();
             playerInventory = GetComponentInParent<PlayerInventory>();
-            weaponSlotManager = GetComponent<WeaponSlotManager>();
+            weaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
         }
 
