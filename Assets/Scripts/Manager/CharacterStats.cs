@@ -15,6 +15,12 @@ namespace CXZ
         public float maxStamina;
         public float currentStamina;
 
+        public int focusLevel = 10;
+        public float maxFocusPoints;
+        public float currentFocusPoints;
+
+        public int soulCount = 0;
+
         public bool isDead;
     }
 }

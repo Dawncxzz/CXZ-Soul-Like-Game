@@ -10,6 +10,9 @@ namespace CXZ
         public GameObject spellCastFX;
         public string spellAnimation;
 
+        [Header("Spell Cost")]
+        public int focusPointCost;
+
         [Header("Spell Type")]
         public bool isFaithSpell;
         public bool isMagicSpell;
@@ -25,8 +28,8 @@ namespace CXZ
         }
 
         public virtual void SuccessfullyCastSpell(PlayerAnimatorManager animatorHandler, PlayerStats playerStats)
-        { 
-        
+        {
+            playerStats.DeductFocusPoints(focusPointCost);
         }
     }
 }

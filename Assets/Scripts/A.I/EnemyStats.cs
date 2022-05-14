@@ -7,12 +7,13 @@ namespace CXZ
 {
     public class EnemyStats : CharacterStats
     {
+        EnemyAnimatorManager enemyAnimatorManager;
 
-        Animator animator;
+        public int soulsAwardedOnDeath = 50;
 
         private void Awake()
         {
-            animator = GetComponentInChildren<Animator>();
+            enemyAnimatorManager = GetComponentInChildren<EnemyAnimatorManager>();
         }
         private void Start()
         {
@@ -42,15 +43,21 @@ namespace CXZ
                 return;
 
             currentHealth = currentHealth - damage;
-            animator.applyRootMotion = true;
-            animator.CrossFade("Damage_1", 0.2f);
+
+            enemyAnimatorManager.PlayerTargetAnimation("Damage_1", true, false);
 
             if (currentHealth <= 0)
             {
-                currentHealth = 0;
-                animator.CrossFade("Dead_1", 0.2f);
-                isDead = true;
+                HandleDeath();
             }
+        }
+
+        public void HandleDeath()
+        {
+            currentHealth = 0;
+            enemyAnimatorManager.PlayerTargetAnimation("Dead_1", true, false);
+            isDead = true;
+            
         }
     }
 }

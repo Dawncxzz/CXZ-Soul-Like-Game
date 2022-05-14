@@ -9,6 +9,7 @@ namespace CXZ
     {
         PlayerManager playerManager;
         HealthBar healthBar;
+        FocusPointBar focusPointBar;
         StaminaBar staminaBar;
 
         PlayerAnimatorManager animHandler;
@@ -21,6 +22,7 @@ namespace CXZ
             playerManager = GetComponent<PlayerManager>();  
             healthBar = FindObjectOfType<HealthBar>();
             staminaBar = FindObjectOfType<StaminaBar>();
+            focusPointBar = FindObjectOfType<FocusPointBar>();
             animHandler = GetComponentInChildren<PlayerAnimatorManager>();
         }
         private void Start()
@@ -35,6 +37,10 @@ namespace CXZ
             staminaBar.SetMaxStamina(maxStamina);
             staminaBar.SetCurrentStamina(currentStamina);
 
+            maxFocusPoints = SetMaxFocusPointsFromFocusLevel();
+            currentFocusPoints = maxFocusPoints;
+            focusPointBar.SetMaxFocusPoint(maxFocusPoints);
+            focusPointBar.SetCurrentFocusPoint(currentFocusPoints);
         }
         private int SetMaxHealthFromHealthLevel()
         { 
@@ -46,6 +52,12 @@ namespace CXZ
         { 
             maxStamina = staminaLevel * 10;
             return maxStamina;
+        }
+
+        private float SetMaxFocusPointsFromFocusLevel()
+        { 
+            maxFocusPoints = focusLevel * 10;
+            return maxFocusPoints;
         }
 
         public void TakeDamage(int damage)
@@ -114,6 +126,21 @@ namespace CXZ
             }
 
             healthBar.SetCurrentHealth(currentHealth);
+        }
+
+        public void DeductFocusPoints(int focusPoints)
+        { 
+            currentFocusPoints = currentFocusPoints - focusPoints;
+            if (currentFocusPoints < 0)
+            {
+                currentFocusPoints = 0;
+            }
+            focusPointBar.SetCurrentFocusPoint(currentFocusPoints);
+        }
+
+        public void AddSouls(int souls)
+        {
+            soulCount = soulCount + souls;
         }
     }
 }

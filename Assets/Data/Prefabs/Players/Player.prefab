@@ -90,6 +90,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3295509551898654751}
+  - {fileID: 6957872005268034782}
   m_Father: {fileID: 3295509553254206021}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,6 +202,7 @@ Transform:
   m_Children:
   - {fileID: 3295509551468363627}
   - {fileID: 3295509553247423216}
+  - {fileID: 3724481346388236119}
   m_Father: {fileID: 3295509553254206021}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -292,7 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698b3bf844914a34985b833095c48510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backStabberStandPoint: {fileID: 3295509551898654751}
+  criticalDamageStandPosition: {fileID: 3295509551898654751}
 --- !u!1 &3295509553254206022
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +389,7 @@ MonoBehaviour:
   y_Input: 0
   rb_Input: 0
   rt_Input: 0
+  lb_Input: 0
   critical_Attack_Input: 0
   jump_Input: 0
   inventory_Input: 0
@@ -452,6 +455,7 @@ MonoBehaviour:
   lockOnTransform: {fileID: 3295509553312333433}
   backStabBoxCollider: {fileID: 0}
   backStabCollider: {fileID: 3295509553247423223}
+  riposteCollider: {fileID: 0}
   pendingCriticalDamage: 0
   interactableUIGameobject: {fileID: 0}
   itemInteractableGameObject: {fileID: 0}
@@ -480,11 +484,11 @@ MonoBehaviour:
   leftWeapon: {fileID: 11400000, guid: c85d14bfdecaa624aaf0ebdb7bc412c2, type: 2}
   unarmWeapon: {fileID: 11400000, guid: 59594d2580b60c84491652c10f70bb5a, type: 2}
   weaponsInRightHandSlots:
-  - {fileID: 11400000, guid: d384bae736d4bf645a4dd9a6649f05e5, type: 2}
   - {fileID: 11400000, guid: c1f28aad5a39df94696f4b3d88d6d75c, type: 2}
+  - {fileID: 11400000, guid: 508aca578effc6349a6d21261cd1af3b, type: 2}
   weaponsInLeftHandSlots:
-  - {fileID: 11400000, guid: c85d14bfdecaa624aaf0ebdb7bc412c2, type: 2}
-  - {fileID: 11400000, guid: c1f28aad5a39df94696f4b3d88d6d75c, type: 2}
+  - {fileID: 11400000, guid: 508aca578effc6349a6d21261cd1af3b, type: 2}
+  - {fileID: 11400000, guid: d384bae736d4bf645a4dd9a6649f05e5, type: 2}
   currentRightWeaponIndex: 0
   currentLeftWeaponIndex: 0
   weaponsInventory: []
@@ -506,6 +510,10 @@ MonoBehaviour:
   staminaLevel: 10
   maxStamina: 0
   currentStamina: 0
+  focusLevel: 10
+  maxFocusPoints: 0
+  currentFocusPoints: 0
+  soulCount: 0
   isDead: 0
   staminaRegenerationAmount: 30
   staminaRegenerateTimer: 0
@@ -593,12 +601,100 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3295509553454408363}
   m_LocalRotation: {x: 0.6328174, y: -0.31551257, z: 0.64587027, w: 0.28782916}
-  m_LocalPosition: {x: -0.0063706553, y: -0.0048557944, z: 0.00038595908}
+  m_LocalPosition: {x: -0.0044, y: -0.0073, z: 0.0004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7254085129381969588}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5546061579458075287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6957872005268034782}
+  m_Layer: 9
+  m_Name: Riposte Standing Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6957872005268034782
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5546061579458075287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3295509551579471544}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8538556269682948254
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3724481346388236119}
+  - component: {fileID: 2749090699733520703}
+  - component: {fileID: 2869267680523297986}
+  m_Layer: 16
+  m_Name: Riposte Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3724481346388236119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538556269682948254}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 12.42, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3295509552797879815}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2749090699733520703
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538556269682948254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 7.68, z: 0.05633831}
+  m_Center: {x: -0.042007565, y: 0, z: 0.20605326}
+--- !u!114 &2869267680523297986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8538556269682948254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698b3bf844914a34985b833095c48510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  criticalDamageStandPosition: {fileID: 6957872005268034782}
 --- !u!1001 &3295509552127493277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2536,19 +2632,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67493e695f8131c45a655880682ac18a, type: 3}
---- !u!4 &3041822039373128566 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67493e695f8131c45a655880682ac18a, type: 3}
-  m_PrefabInstance: {fileID: 3295509552127493277}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2413201162065574348 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 67493e695f8131c45a655880682ac18a, type: 3}
-  m_PrefabInstance: {fileID: 3295509552127493277}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4753430869628254611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7803493828134321422, guid: 67493e695f8131c45a655880682ac18a, type: 3}
+  m_PrefabInstance: {fileID: 3295509552127493277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1948130672431134988 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -5281272122868777583, guid: 67493e695f8131c45a655880682ac18a, type: 3}
   m_PrefabInstance: {fileID: 3295509552127493277}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4074498288006171246 stripped
@@ -2561,14 +2652,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5266871287803165225, guid: 67493e695f8131c45a655880682ac18a, type: 3}
   m_PrefabInstance: {fileID: 3295509552127493277}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1948130672431134988 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -5281272122868777583, guid: 67493e695f8131c45a655880682ac18a, type: 3}
-  m_PrefabInstance: {fileID: 3295509552127493277}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6018313207929488910 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9095397146258735763, guid: 67493e695f8131c45a655880682ac18a, type: 3}
+  m_PrefabInstance: {fileID: 3295509552127493277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3041822039373128566 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 67493e695f8131c45a655880682ac18a, type: 3}
+  m_PrefabInstance: {fileID: 3295509552127493277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2413201162065574348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 67493e695f8131c45a655880682ac18a, type: 3}
   m_PrefabInstance: {fileID: 3295509552127493277}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &3295509551937545274

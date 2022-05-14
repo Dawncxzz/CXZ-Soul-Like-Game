@@ -186,8 +186,6 @@ namespace CXZ
                 animatorHandler.UpdateAnimatorValue(inputHandler.moveAmount, 0, playerManager.isSpriting);
             }
             
-
-            
         }
 
         public void HandleRollingAndSprinting(float delta)

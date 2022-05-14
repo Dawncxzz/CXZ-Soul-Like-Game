@@ -14,7 +14,9 @@ namespace CXZ
         PlayerWeaponSlotManager weaponSlotManager;
         public string lastAttack;
 
-        LayerMask backStabLayer = 1 << 12;
+        LayerMask backStabLayer;
+        LayerMask riposteLayer;
+
 
         private void Awake()
         {
@@ -24,6 +26,8 @@ namespace CXZ
             playerInventory = GetComponentInParent<PlayerInventory>();
             weaponSlotManager = GetComponent<PlayerWeaponSlotManager>();
             inputHandler = GetComponentInParent<InputHandler>();
+            backStabLayer = 1 << LayerMask.NameToLayer("BackStab");
+            riposteLayer = 1 << LayerMask.NameToLayer("Riposte");
         }
 
         public void HandleWeaponCombo(WeaponItem weaponItem)
@@ -155,24 +159,44 @@ namespace CXZ
 
         private void PerformRBMagicAction(WeaponItem weaponItem)
         {
+            if (playerManager.isInteracting)
+                return;
+
             if (weaponItem.isFaithCaster)
             {
                 if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
                 {
-                    animatorHandler.anim.SetBool("isUsingRightHand", true);
-                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        animatorHandler.anim.SetBool("isUsingRightHand", true);
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayerTargetAnimation("Shrug", true, false);
+                    }
                 }
             }
         }
         
         private void PerformRTMagicAction(WeaponItem weaponItem)
         {
+            if (playerManager.isInteracting)
+                return;
+
             if (weaponItem.isFaithCaster)
             {
                 if (playerInventory.currentSpell != null && playerInventory.currentSpell.isFaithSpell)
                 {
-                    animatorHandler.anim.SetBool("isUsingLeftHand", true);
-                    playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    if (playerStats.currentFocusPoints >= playerInventory.currentSpell.focusPointCost)
+                    {
+                        animatorHandler.anim.SetBool("isUsingLeftHand", true);
+                        playerInventory.currentSpell.AttemptToCastSpell(animatorHandler, playerStats);
+                    }
+                    else
+                    {
+                        animatorHandler.PlayerTargetAnimation("Shrug", true, false);
+                    }
                 }
             }
         }
@@ -201,7 +225,7 @@ namespace CXZ
 
                     if (enemyCharacterManager != null)
                     {
-                        playerManager.transform.position = enemyCharacterManager.backStabCollider.backStabberStandPoint.position;
+                        playerManager.transform.position = enemyCharacterManager.backStabCollider.criticalDamageStandPosition.position;
 
                         Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
                         rotationDirection = hit.transform.position - playerManager.transform.position;
@@ -217,6 +241,32 @@ namespace CXZ
                         animatorHandler.PlayerTargetAnimation("Back Stab", true, false);
                         enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayerTargetAnimation("Back Stabbed", true, false);
                     }
+                }
+                else if (Physics.Raycast(inputHandler.criticalAttackRayCastStartPoint.position,
+                    transform.TransformDirection(Vector3.forward), out hit, 0.5f, riposteLayer))
+                {
+                    CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
+                    DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
+
+                    if (enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
+                    {
+                        playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamageStandPosition.position;
+
+                        Vector3 rotationDirection = playerManager.transform.root.eulerAngles;
+                        rotationDirection = hit.transform.position - playerManager.transform.position;
+                        rotationDirection.y = 0;
+                        rotationDirection.Normalize();
+                        Quaternion tr = Quaternion.LookRotation(rotationDirection);
+                        Quaternion targetRotation = Quaternion.Slerp(playerManager.transform.rotation, tr, 500 * Time.deltaTime);
+                        playerManager.transform.rotation = targetRotation;
+
+                        int criticalDamage = playerInventory.rightWeapon.criticalDamageMultiplier * rightWeapon.currentWeaponDamage;
+                        enemyCharacterManager.pendingCriticalDamage = criticalDamage;
+
+                        animatorHandler.PlayerTargetAnimation("Riposte", true, false);
+                        enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayerTargetAnimation("Risposted0", true, false);
+                    }
+                   
                 }
             }
         }
