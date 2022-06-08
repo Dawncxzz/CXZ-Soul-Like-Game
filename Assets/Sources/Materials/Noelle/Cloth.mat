@@ -88,6 +88,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 5857dedad53ca0545ba39832c7c06c34, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SSSLut:
+        m_Texture: {fileID: 2800000, guid: a374044a2792337489d48e45db1b6532, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -130,6 +134,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimOffset: 0.4
     - _RimThreshold: 0.1
+    - _SSSPower: 0.241
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

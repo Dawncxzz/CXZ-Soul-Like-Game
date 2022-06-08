@@ -247,7 +247,6 @@ namespace CXZ
                 {
                     CharacterManager enemyCharacterManager = hit.transform.gameObject.GetComponentInParent<CharacterManager>();
                     DamageCollider rightWeapon = weaponSlotManager.rightHandDamageCollider;
-
                     if (enemyCharacterManager != null && enemyCharacterManager.canBeRiposted)
                     {
                         playerManager.transform.position = enemyCharacterManager.riposteCollider.criticalDamageStandPosition.position;
@@ -264,7 +263,7 @@ namespace CXZ
                         enemyCharacterManager.pendingCriticalDamage = criticalDamage;
 
                         animatorHandler.PlayerTargetAnimation("Riposte", true, false);
-                        enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayerTargetAnimation("Risposted0", true, false);
+                        enemyCharacterManager.GetComponentInChildren<AnimatorManager>().PlayerTargetAnimation("Riposted", true, false);
                     }
                    
                 }

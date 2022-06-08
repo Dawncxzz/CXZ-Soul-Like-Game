@@ -27,6 +27,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
         MaterialProperty _RimColor = null;
         MaterialProperty _RimOffset = null;
         MaterialProperty _RimThreshold = null;
+        MaterialProperty _SSSLut = null;
+        MaterialProperty _SSSPower = null;
 
         public override void OnOpenGUI(Material material, MaterialEditor materialEditor)
         {
@@ -67,6 +69,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             _RimColor = FindProperty("_RimColor", properties);
             _RimOffset = FindProperty("_RimOffset", properties);
             _RimThreshold = FindProperty("_RimThreshold", properties);
+            _SSSLut = FindProperty("_SSSLut", properties);
+            _SSSPower = FindProperty("_SSSPower", properties);
 
         }
 
@@ -140,6 +144,8 @@ namespace UnityEditor.Rendering.Universal.ShaderGUI
             materialEditor.ShaderProperty(_OutlineOffset, "描边宽度");
             materialEditor.ShaderProperty(_OutlineBias, "描边深度");
             materialEditor.ShaderProperty(_OutlineColor, "描边颜色");
+            materialEditor.ShaderProperty(_SSSLut, "SSS查找表");
+            materialEditor.ShaderProperty(_SSSPower, "SSS强度");
 
             if (EditorGUI.EndChangeCheck())
             {

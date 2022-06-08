@@ -28,8 +28,10 @@ namespace CXZ
 
         public void TakeDamageNoAnimation(int damage)
         {
+            Debug.Log(currentHealth);
+            Debug.Log(damage);
             currentHealth = currentHealth - damage;
-
+            Debug.Log(currentHealth);
             if (currentHealth <= 0)
             {
                 currentHealth = 0;

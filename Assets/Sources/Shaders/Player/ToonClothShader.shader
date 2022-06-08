@@ -18,6 +18,8 @@ Shader "Toon/ToonClothShader"
         [HDR]_RimColor ("_RimColor", Color) = (1,1,1,1)
         _RimOffset ("_RimOffset", Range(0, 5)) = 1
         _RimThreshold ("_RimThreshold", Range(0, 5)) = 1
+        _SSSLut ("_SSSLut", 2D) = "white" {}
+        _SSSPower ("_SSSPower", Range(0, 1)) = 0
 
 
         // Specular vs Metallic workflow
